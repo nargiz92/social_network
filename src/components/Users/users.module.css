@@ -3,3 +3,9 @@
     height: 100px;
     border-radius: 20px;
 }
+
+.page{
+    font-size: 25px;
+    color:green;
+    text-shadow: 2px 0 2px #8c1b21
+}
