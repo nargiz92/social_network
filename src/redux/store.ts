@@ -1,4 +1,4 @@
-import profilePageReducer, {AddPostType, UpdatedNewPostTextType} from "./Profile_Page_reduser";
+import profilePageReducer, {AddPostType, setUserProfileACType, UpdatedNewPostTextType} from "./Profile_Page_reduser";
 import dialogsPageReducer, {ADD_NEW_MESSAGE, AddNewMessageType, UpdatedNewMessageType,} from "./Dialogs_Page_reduser";
 import SideBarReducer from "./SideBar_reduser";
 
@@ -23,6 +23,7 @@ export type FriendsType = {
 export type ProfilePagesType = {
     posts: PostsType[]
     newPostText: string
+    setUserProfile:null
 }
 export type DialogsPagesType = {
     dialogs: DialogsType[]
@@ -39,7 +40,7 @@ export type StateType = {
 }
 
 export type ActionType=AddPostType|UpdatedNewPostTextType|
-    AddNewMessageType|UpdatedNewMessageType
+    AddNewMessageType|UpdatedNewMessageType|setUserProfileACType
 
 export type StoreType = {
     _state: StateType
@@ -59,6 +60,7 @@ let store: StoreType = {
                 {id: 3, message: 'Yo', likes: 51},
             ],
             newPostText: 'it-incubator',
+            setUserProfile:null
         },
         dialogsPages: {
             dialogs: [
@@ -91,11 +93,11 @@ let store: StoreType = {
         console.log('rerendered')
     },
     dispatch(action: ActionType) {
-        debugger
-        this._state.profilePages = profilePageReducer(this._state.profilePages, action)
-        this._state.dialogsPages = dialogsPageReducer(this._state.dialogsPages, action)
-        this._state.sideBar = SideBarReducer(this._state.sideBar, action)
-        this._callSubscriber(this._state);
+
+        // this._state.profilePages = profilePageReducer(this._state.profilePages, action)
+        // this._state.dialogsPages = dialogsPageReducer(this._state.dialogsPages, action)
+        // this._state.sideBar = SideBarReducer(this._state.sideBar, action)
+        // this._callSubscriber(this._state);
     },
     subscriber(observer: (state: any) => void) {
         this._callSubscriber = observer;

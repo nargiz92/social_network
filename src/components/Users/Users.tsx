@@ -2,6 +2,7 @@ import React from 'react';
 import s from './users.module.css'
 import userImage from '../../assets/images/OIP.jpeg'
 import {UsersPropsType} from "./UsersContainer";
+import {NavLink} from 'react-router-dom';
 
 type UsersPropsTypes = UsersPropsType & {
     onPageChanged: (pageNumber: number) => void
@@ -14,26 +15,30 @@ const Users = (props: UsersPropsTypes) => {
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
     }
-        return (
+    return (
+        <div>
             <div>
-                <div>
-                    {pages.map(t => {
-                        return <span style={{marginRight: 5}} className={props.currentPage == t ? s.page : ''}
-                                     onClick={(e) => {
-                                         props.onPageChanged(t)
-                                     }}>{t}</span>
-                    })}
-                </div>
-                {/*<div>1</div>*/}
-                {/*<div className={s.page}>2</div>*/}
-                {/*<div>3</div>*/}
-                {/*<div>4</div>*/}
-                {/*<div>5</div>*/}
-                {props.users.map(u => <div key={u.id}>
+                {pages.map(t => {
+                    return <span style={{marginRight: 5}} className={props.currentPage == t ? s.page : ''}
+                                 onClick={(e) => {
+                                     props.onPageChanged(t)
+                                 }}>{t}</span>
+                })}
+            </div>
+            {/*<div>1</div>*/}
+            {/*<div className={s.page}>2</div>*/}
+            {/*<div>3</div>*/}
+            {/*<div>4</div>*/}
+            {/*<div>5</div>*/}
+            {props.users.map(u => <div key={u.id}>
                 <span>
+
                     <div>
+                        <NavLink to={'/profile/' + u.id}>
                         <img src={u.photos.small || userImage} className={s.userPhoto}/>
+                    </NavLink>
                     </div>
+
                     <div>
                         {u.followed
                             ? <button onClick={() => {
@@ -45,7 +50,7 @@ const Users = (props: UsersPropsTypes) => {
                         }
                     </div>
                 </span>
-                    <span>
+                <span>
                     <span>
                         <div>{u.name}</div>
                         <div>{u.status}</div>
@@ -55,9 +60,9 @@ const Users = (props: UsersPropsTypes) => {
                         <div>{'u.location.city'}</div>
                     </span>
                 </span>
-                </div>)}
-            </div>
-        );
+            </div>)}
+        </div>
+    );
 }
 
 export default Users;

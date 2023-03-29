@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter, HashRouter} from "react-router-dom";
 import  {StateType} from "./redux/store";
 import {Provider} from "react-redux";
 import store, {AppRootStateType} from "./redux/redux-store";
@@ -15,11 +15,11 @@ import store, {AppRootStateType} from "./redux/redux-store";
 
 let rerender=(state:AppRootStateType)=>{
     ReactDOM.render(
-        <BrowserRouter>
+        <HashRouter>
             <Provider store={store}>
             <App />
         </Provider>
-        </BrowserRouter>,
+        </HashRouter>,
         document.getElementById('root')
     );
 }

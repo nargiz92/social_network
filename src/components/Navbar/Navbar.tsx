@@ -10,7 +10,7 @@ export const Navbar = () => {
     return (
         <nav className={s.nav}>
             <div className={s.item}>
-                <NavLink to='profile' activeClassName={s.activeNavlink} >Profile</NavLink>
+                <NavLink to='/profile' activeClassName={s.activeNavlink} >Profile</NavLink>
             </div>
             <div className={`${s.item} ${s.activ}`}>
                 <NavLink to='/dialogs' activeClassName={s.activeNavlink}>Messаge</NavLink>
@@ -19,16 +19,16 @@ export const Navbar = () => {
                 <NavLink to='/news' activeClassName={s.activeNavlink}>News</NavLink>
             </div>
             <div className={s.item}>
-                <NavLink to='music' activeClassName={s.activeNavlink}>Musiс</NavLink>
+                <NavLink to='/music' activeClassName={s.activeNavlink}>Musiс</NavLink>
             </div>
             <div className={s.item}>
-                <NavLink to='settings' activeClassName={s.activeNavlink}>Settings</NavLink>
+                <NavLink to='/settings' activeClassName={s.activeNavlink}>Settings</NavLink>
             </div>
             <div className={s.item}>
-                <NavLink to='users' activeClassName={s.activeNavlink}>Users</NavLink>
+                <NavLink to='/users' activeClassName={s.activeNavlink}>Users</NavLink>
             </div>
             <div className={s.item}>
-                <NavLink to='friends' activeClassName={s.activeNavlink}>Friends</NavLink>
+                <NavLink to='/friends' activeClassName={s.activeNavlink}>Friends</NavLink>
             </div>
 
 

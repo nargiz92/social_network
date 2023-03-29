@@ -4,13 +4,15 @@ import dialogsPageReducer from "./Dialogs_Page_reduser";
 import SideBarReducer from "./SideBar_reduser";
 
 import {usersReducer} from "./Users-reducer";
+import {authReducer} from "./auth-reducer";
+
 
 export type AppRootStateType=ReturnType<typeof rootReducers>
 let rootReducers=combineReducers({
     profilePages:profilePageReducer,
     dialogsPages:dialogsPageReducer,
-
-    usersPage:usersReducer
+    usersPage:usersReducer,
+    auth:authReducer
 })
 
 
