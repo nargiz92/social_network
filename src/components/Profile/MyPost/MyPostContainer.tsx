@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './MyPost.module.css'
 import { PostsType,} from "../../../redux/store";
-import {addPostAC, updatedNewPostTextAC} from "../../../redux/Profile_Page_reduser";
+import {addPostAC} from "../../../redux/Profile_Page_reduser";
 import MyPost from "./MyPost";
 
 import {connect} from "react-redux";
@@ -10,28 +10,25 @@ import {Dispatch} from "redux";
 
 type mapToMyPostContainerType = {
     posts: PostsType[]
-    newPostText: string
+
 }
 type mapToMyDispatchType = {
-    addPost: () => void
-    onChangePost: (text: string) => void
+    addPost: (newMyPostText:string) => void
+
 }
 export type MyPostType = mapToMyPostContainerType & mapToMyDispatchType
 const mapToMyPostContainer = (state: AppRootStateType): mapToMyPostContainerType => {
     return {
-        posts: state.profilePages.posts,
-        newPostText: state.profilePages.newPostText
+        posts: state.profilePages.posts
+        // newPostText: state.profilePages.newPostText
     }
 }
 
 const mapToMyDispatch = (dispatch: Dispatch): mapToMyDispatchType => {
     return {
-        addPost: () => {
-            dispatch(addPostAC())
+        addPost: (newMyPostText:string) => {
+            dispatch(addPostAC(newMyPostText))
         },
-        onChangePost: (text: string) => {
-            dispatch(updatedNewPostTextAC(text))
-        }
     }
 
 }

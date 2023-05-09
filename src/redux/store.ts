@@ -1,6 +1,9 @@
-import profilePageReducer, {AddPostType, setUserProfileACType, UpdatedNewPostTextType} from "./Profile_Page_reduser";
-import dialogsPageReducer, {ADD_NEW_MESSAGE, AddNewMessageType, UpdatedNewMessageType,} from "./Dialogs_Page_reduser";
-import SideBarReducer from "./SideBar_reduser";
+import profilePageReducer, {AddPostType, setUserProfileACType} from "./Profile_Page_reduser";
+import dialogsPageReducer, {
+    sendNewMessageType,
+
+} from "./Dialogs_Page_reduser";
+
 
 export type PostsType = {
     id: number
@@ -28,7 +31,7 @@ export type ProfilePagesType = {
 export type DialogsPagesType = {
     dialogs: DialogsType[]
     messages: MessageType[]
-    newTextForMessage: string
+
 }
 export type SideBareType = {
     friends: FriendsType[]
@@ -39,8 +42,8 @@ export type StateType = {
     sideBar: SideBareType
 }
 
-export type ActionType=AddPostType|UpdatedNewPostTextType|
-    AddNewMessageType|UpdatedNewMessageType|setUserProfileACType
+export type ActionType=AddPostType|
+    sendNewMessageType|setUserProfileACType
 
 export type StoreType = {
     _state: StateType
@@ -76,7 +79,7 @@ let store: StoreType = {
                 {id: 3, message: 'What`s up?'},
                 {id: 4, message: 'Nice'},
             ],
-            newTextForMessage: 'What are you doing?'
+
         },
         sideBar: {
             friends: [

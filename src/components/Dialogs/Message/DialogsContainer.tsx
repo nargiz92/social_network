@@ -3,36 +3,37 @@ import s from './Dialogs.module.css'
 
 import Dialogs from "../Dialogs";
 import { DialogsPagesType} from "../../../redux/store";
-import {addNewMessageTextAC, updatedNewMessageAC} from "../../../redux/Dialogs_Page_reduser";
+import {sendNewMessageTextAC} from "../../../redux/Dialogs_Page_reduser";
 
 import {connect} from "react-redux";
 import {AppRootStateType} from "../../../redux/redux-store";
-import {Dispatch} from "redux";
+import {compose, Dispatch} from "redux";
+
+import WithAuthRedirect from "../../../HOC/withAuthRedirect";
 
 type mapStateToPropsType = {
     dialogsPages: DialogsPagesType
+
 }
 type mapDispatchToPropsType = {
-    addMessage: () => void
-    onChangeText: (body: string) => void
+    sendMessage: (newMessageBody:string) => void
 }
 const mapStateToProps = (state: AppRootStateType): mapStateToPropsType => {
     return {
-        dialogsPages: state.dialogsPages
+        dialogsPages: state.dialogsPages,
+
     }
 }
 export type DialogsPropsType = mapDispatchToPropsType & mapStateToPropsType
 const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
     return {
-        addMessage: () => {
-            dispatch(addNewMessageTextAC())
+        sendMessage: (newMessageBody:string) => {
+            dispatch(sendNewMessageTextAC(newMessageBody))
         },
-        onChangeText: (body: string) => {
-            dispatch(updatedNewMessageAC(body))
-        }
 
     }
 }
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
 
-export default DialogsContainer;
+export default compose<React.ComponentType>(
+    connect(mapStateToProps, mapDispatchToProps), WithAuthRedirect
+)(Dialogs)

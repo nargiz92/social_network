@@ -2,9 +2,12 @@ import React from 'react';
 import s from './ProfileInfo.module.css'
 import Preloader from "../../../common/preloader/Preloader";
 import {ProfilyType} from "../../../redux/Profile_Page_reduser";
+import ProfileStatus from "./ProfileStatus";
 
 type ProfileInfoPropsType = {
     profile: null | ProfilyType
+    status:string
+    updatedStatus:(status:string)=>void
 }
 const ProfileInfo = (props: ProfileInfoPropsType) => {
     if (!props.profile) {
@@ -30,6 +33,7 @@ const ProfileInfo = (props: ProfileInfoPropsType) => {
                     {props.profile.contacts.vk}
                 </li>
             </ul>
+            <ProfileStatus status={props.status} updatedStatus={props.updatedStatus}/>
         </div>
     );
 };

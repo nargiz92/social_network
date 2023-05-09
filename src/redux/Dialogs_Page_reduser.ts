@@ -1,14 +1,11 @@
-import {ActionType, DialogsPagesType, } from "./store";
+import { DialogsPagesType, } from "./store";
 
-export const ADD_NEW_MESSAGE = 'ADD_NEW_MESSAGE'
-export const UPDATED_NEW_MESSAGE = 'UPDATED-NEW-MESSAGE'
+export const SEND_NEW_MESSAGE = 'SEND_NEW_MESSAGE'
 
-export type AddNewMessageType = {
-    type: 'ADD_NEW_MESSAGE'
-}
-export type UpdatedNewMessageType = {
-    type: 'UPDATED-NEW-MESSAGE'
-    body: string
+
+export type sendNewMessageType = {
+    type: 'SEND_NEW_MESSAGE'
+    newMessageBody:string
 }
 
 const iniState:DialogsPagesType={
@@ -24,28 +21,25 @@ const iniState:DialogsPagesType={
             {id: 2, message: 'Are you ok?'},
             {id: 3, message: 'What`s up?'},
             {id: 4, message: 'Nice'},
-        ],
-        newTextForMessage: 'What are you doing?'
+        ]
     }
 
 
 const dialogsPageReducer = (state=iniState, action: ActionType):DialogsPagesType => {
     switch (action.type) {
-        case ADD_NEW_MESSAGE: {
-            return {...state,newTextForMessage:'',messages:[...state.messages,{id: 5, message:state.newTextForMessage}]}
+        case SEND_NEW_MESSAGE: {
+            return {...state,messages:[...state.messages,{id: 5, message:action.newMessageBody}]}
 
         }
-        case UPDATED_NEW_MESSAGE: {
-            return {...state,newTextForMessage:action.body}
-        }
+
         default:
             return state
     }
 }
+type ActionType=sendNewMessageType
 
+export const sendNewMessageTextAC = (newMessageBody:string): sendNewMessageType => ({type: SEND_NEW_MESSAGE,
+    newMessageBody})
 
-export const addNewMessageTextAC = (): AddNewMessageType => ({type: ADD_NEW_MESSAGE})
-export const updatedNewMessageAC = (body: any): UpdatedNewMessageType =>
-    ({type: UPDATED_NEW_MESSAGE, body: body})
 
 export default dialogsPageReducer;
