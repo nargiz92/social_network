@@ -44,9 +44,9 @@ const LoginReduxForm = reduxForm<FormDataType>({
     form: 'login'
 })(LoginForm)
 
-const Login = (props: any) => {
+const Login = (props: LoginOwnPropsType) => {
     const onSubmit = (formData: FormDataType) => {
-        props.login(formData.email, formData.rememberMe, formData.rememberMe)
+        props.login(formData.email, formData.password, formData.rememberMe)
     }
     if (props.isAuth) {
         return <Redirect to={'/profile'}/>
@@ -57,11 +57,15 @@ const Login = (props: any) => {
     </div>
 
 }
-type mapStateToPropsType = {
+type MapStateToPropsType = {
     isAuth: boolean
 
 }
-const mapStateToProps = (state: AppRootStateType) => ({
+const mapStateToProps = (state: AppRootStateType): MapStateToPropsType => ({
     isAuth: state.auth.isAuth
 })
+type MapDispatchToPropsType = {
+    login: (email: string, password: string, rememberMe: boolean) => void
+}
+type LoginOwnPropsType = MapStateToPropsType & MapDispatchToPropsType
 export default connect(mapStateToProps, {login})(Login)

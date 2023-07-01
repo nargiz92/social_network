@@ -10,6 +10,7 @@ type HeaderPropsType={
 }
 
 const Header = (props:HeaderPropsType) => {
+
     return (
         <header className={s.header}>
 

@@ -2,6 +2,7 @@ import {Dispatch} from "redux";
 import {authAPI} from "../api/API";
 import {stopSubmit} from "redux-form";
 import {getAuthUserData} from "./auth-reducer";
+import {BaseThunkCreatorType} from "./redux-store";
 
 
 export type InitPropsTypes = {
@@ -34,8 +35,8 @@ export const InitilizedSuccses = () => {
 }
 
 
-export const initilizeApp = () => {
-    return (dispatch: Dispatch) => {
+export const initilizeApp = ():BaseThunkCreatorType<AllActionType, void> => {
+    return (dispatch) => {
 
         let promise = dispatch(getAuthUserData())
             Promise.all([promise])

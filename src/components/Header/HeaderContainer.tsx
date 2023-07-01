@@ -22,7 +22,8 @@ type PropsAuthType = RouteComponentProps<PathParamsType> & OwnPropsType
 class HeaderContainer extends React.Component<OwnPropsType> {
 
     render() {
-        return <Header {...this.props}/>
+        const {logout, auth} = this.props;
+        return <Header logout={logout} isAuth={auth.isAuth} login={auth.login}/>
 
     }
 };

@@ -1,7 +1,7 @@
-import {applyMiddleware, combineReducers, createStore} from "redux";
+import {Action, applyMiddleware, combineReducers, createStore} from "redux";
 import profilePageReducer from "./Profile_Page_reduser";
 import dialogsPageReducer from "./Dialogs_Page_reduser";
-import thunkMiddleWare from 'redux-thunk'
+import thunkMiddleWare, {ThunkAction} from 'redux-thunk'
 import {usersReducer} from "./Users-reducer";
 import {authReducer} from "./auth-reducer";
 import {reducer as formReducer} from 'redux-form'
@@ -17,8 +17,8 @@ let rootReducers=combineReducers({
     app:appReducer
 })
 
-
-export let store=createStore(rootReducers,applyMiddleware(thunkMiddleWare));
+export type BaseThunkCreatorType<A extends Action = Action, R = Promise<void>> = ThunkAction<R, AppRootStateType, unknown, A>
+export const store=createStore(rootReducers,applyMiddleware(thunkMiddleWare));
 // @ts-ignore
 window.store=store;
 

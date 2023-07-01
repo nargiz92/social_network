@@ -3,6 +3,7 @@ import s from './ProfileInfo.module.css'
 import Preloader from "../../../common/preloader/Preloader";
 import {ProfilyType} from "../../../redux/Profile_Page_reduser";
 import ProfileStatus from "./ProfileStatus";
+import ProfileStatusWithHook from "./ProfileStatusWithHook";
 
 type ProfileInfoPropsType = {
     profile: null | ProfilyType
@@ -33,7 +34,7 @@ const ProfileInfo = (props: ProfileInfoPropsType) => {
                     {props.profile.contacts.vk}
                 </li>
             </ul>
-            <ProfileStatus status={props.status} updatedStatus={props.updatedStatus}/>
+            <ProfileStatusWithHook status={props.status} updatedStatus={props.updatedStatus}/>
         </div>
     );
 };

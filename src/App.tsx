@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ComponentType} from 'react';
 import './App.css';
 import {Navbar} from "./components/Navbar/Navbar";
 import Header from "./components/Header/Header";
@@ -16,16 +16,17 @@ import {connect} from "react-redux";
 import {initialize} from "redux-form";
 import Preloader from "./common/preloader/Preloader";
 import {AppRootStateType} from "./redux/redux-store";
-//
-// export type PropsType = {
-//     state: StateType
-//     store: StoreType
-//
-// }
+import {getAuthUserData} from "./redux/auth-reducer";
+import {initilizeApp} from "./redux/app-reducer";
 
-class App extends React.Component {
+export type AppPropsType = {
+    initilizeApp:()=>void
+    initialized:boolean
+}
+
+class App extends React.Component<AppPropsType> {
     componentDidMount() {
-        this.props.getAuthUserData()
+        this.props.initilizeApp()
     }
 
     render() {
@@ -51,9 +52,9 @@ class App extends React.Component {
         );
     }
 }
-const mapStateToProps=(state:AppRootStateType)=>{
+const mapStateToProps=(state:AppRootStateType)=>({
     initialized:state.app.initialized
-}
+})
 
-export default compose(withRouter,
-    connect(mapStateToProps,{getAuthUserData}))(App)
+export default compose<ComponentType>(withRouter,
+    connect(mapStateToProps,{initilizeApp}))(App)

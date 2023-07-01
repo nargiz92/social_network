@@ -123,10 +123,11 @@ export const setUsers = (users: UsersType[]) => {
     } as const
 }
 
-export const getUsers=(currentPage:number,pageSize:number)=>{
+export const getUsers=(page:number,pageSize:number)=>{
     return (dispatch:Dispatch)=>{
         dispatch(toggleIsFetching(true))
-        usersApi.getUsers(currentPage,pageSize)
+     dispatch(setCurrentPage(page))
+        usersApi.getUsers(page,pageSize)
             .then(data => {
                 dispatch(toggleIsFetching(false))
                dispatch(setUsers(data.items))
