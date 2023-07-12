@@ -3,8 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {BrowserRouter, HashRouter} from "react-router-dom";
-import  {StateType} from "./redux/store";
+import { HashRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import store, {AppRootStateType} from "./redux/redux-store";
 

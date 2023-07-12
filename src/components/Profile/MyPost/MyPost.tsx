@@ -1,6 +1,5 @@
 import React from 'react';
 import Post from "./Post/Post";
-
 import {MyPostType} from "./MyPostContainer";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {maxLenghtCreator, required} from "../../../utils/validators/index.";
@@ -12,7 +11,6 @@ type FormDataType = {
 const maxLength10 = maxLenghtCreator(10);
 
 const MyPost=React.memo((props: MyPostType) =>{
-    console.log("Redner")
     let postsElement = props.posts.map(p => <Post message={p.message} key={p.id} likes={p.likes}/>)
     const onAddPost = (values: FormDataType) => {
         props.addPost(values.newMyPostText)

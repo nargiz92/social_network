@@ -1,0 +1,23 @@
+.header {
+    background: #fff;
+    height: 60px;
+    padding: 0 20px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    .logoAndLogin{
+        width: 130px;
+        display: flex;
+        justify-content: space-between;
+        >svg{
+            height: 100%;
+            max-width: 100%;
+            z-index: 10;
+        }
+    }
+
+}
+

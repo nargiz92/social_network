@@ -3,7 +3,6 @@ import s from './MyPost.module.css'
 import { PostsType,} from "../../../redux/store";
 import {addPostAC} from "../../../redux/Profile_Page_reduser";
 import MyPost from "./MyPost";
-
 import {connect} from "react-redux";
 import {AppRootStateType} from "../../../redux/redux-store";
 import {Dispatch} from "redux";
@@ -20,7 +19,6 @@ export type MyPostType = mapToMyPostContainerType & mapToMyDispatchType
 const mapToMyPostContainer = (state: AppRootStateType): mapToMyPostContainerType => {
     return {
         posts: state.profilePages.posts
-        // newPostText: state.profilePages.newPostText
     }
 }
 

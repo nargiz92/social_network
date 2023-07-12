@@ -18,7 +18,7 @@ const FormControl: React.FC<FormControlType> =({input, meta, ...props})=>{
 }
 export const Textarea = (props:WrappedFieldProps) => {
     const {input, meta, ...restProps}=props
-    const hasError = meta.touched && meta.error
+    // const hasError = meta.touched && meta.error
     return (
        <FormControl {...props}><textarea {...input} {...restProps} /></FormControl>
     );
@@ -26,7 +26,7 @@ export const Textarea = (props:WrappedFieldProps) => {
 
 export const Input = (props:WrappedFieldProps) => {
     const {input, meta, ...restProps}=props
-    const hasError = meta.touched && meta.error
+    // const hasError = meta.touched && meta.error
     return (
         <FormControl {...props}><input {...input} {...restProps} /></FormControl>
     );

@@ -16,7 +16,7 @@ type PathParamsType = {
 type mapStatePropsType = {
     profile: null | ProfilyType
     status: string
-    autorizedUserId: string|null
+    autorizedUserId: number|null
     isAuth: boolean
 }
 

@@ -46,14 +46,29 @@ export const profileApi = {
         return instanse.put(`profile/status`,{status} )
     }
 }
+
+type LoginResponseType ={
+    resultCode: number
+    messages: string[],
+    data: {
+        userId: number
+    }
+}
+
+type ResponseAuthApiType<D={}>={
+    resultCode: number;
+    messages: Array<string>;
+    data: D;
+}
+
 export const authAPI = {
     me() {
-        return instanse.get(`auth/me`)
+        return instanse.get<ResponseAuthApiType<{id:number, email:string,login:string}>>(`auth/me`)
     },
     login(email:string,password:string,rememberMe:boolean){
-return instanse.post(`auth/login`,{email, password,rememberMe})
+        return instanse.post<ResponseAuthApiType<{  userId: number }>>(`auth/login`,{email, password,rememberMe})
     },
     logout(){
-        return instanse.delete(`auth/login`)
+        return instanse.delete<ResponseAuthApiType<{}>>(`auth/login`)
     }
 }

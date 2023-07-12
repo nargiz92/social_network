@@ -1,14 +1,11 @@
 import React from 'react';
 import s from './Dialogs.module.css'
-
 import Dialogs from "../Dialogs";
 import { DialogsPagesType} from "../../../redux/store";
 import {sendNewMessageTextAC} from "../../../redux/Dialogs_Page_reduser";
-
 import {connect} from "react-redux";
 import {AppRootStateType} from "../../../redux/redux-store";
 import {compose, Dispatch} from "redux";
-
 import WithAuthRedirect from "../../../HOC/withAuthRedirect";
 
 type mapStateToPropsType = {

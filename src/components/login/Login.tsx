@@ -7,21 +7,25 @@ import {login} from "../../redux/auth-reducer";
 import {Redirect} from "react-router-dom";
 import {AppRootStateType} from "../../redux/redux-store";
 import s from './../../common/./FormsControl/FormControl.module.css'
-
+import container from '../../common/style/Container.module.scss'
 type FormDataType = {
     email: string
     password: string
     rememberMe: boolean
 }
-export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
-    return <form onSubmit={props.handleSubmit}>
+export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = ({handleSubmit,error}) => {
+    return <div>
+        <div className={`${s.container}`}>
+
+
+    <form onSubmit={handleSubmit}>
         <div>
             <Field placeholder={'Email'} name={'email'}
-                   validate={[required,]} component={Input}/>
+                   validate={[required]} component={Input}/>
         </div>
         <div>
-            <Field placeholder={'Password'}
-                   validate={[required,]} name={'password'}
+            <Field placeholder={'Password'} name={'password'}
+                   validate={[required]}
                    type={'password'} component={Input}/>
         </div>
         <div>
@@ -29,16 +33,17 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
                    name='rememberMe' type={'checkbox'}/>remember me
         </div>
         {
-            props.error && <div className={s.formSummaryError}>
-            {props.error}
+            error && <div className={s.formSummaryError}>
+            {error}
         </div>
         }
         <div>
-            <button>Login</button>
+            <button>login</button>
         </div>
+
     </form>
-
-
+</div>
+    </div>
 }
 const LoginReduxForm = reduxForm<FormDataType>({
     form: 'login'

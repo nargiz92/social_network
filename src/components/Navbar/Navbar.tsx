@@ -1,38 +1,65 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {NavLink} from 'react-router-dom';
-import s from './Navbar.module.css';
-import Friends from "../Friends/Friends";
-import {SideBareType} from "../../redux/store";
-
+import s from './Navbar.module.scss';
+import navSvg from '../../assets/images/forNav/user-heart-rounded-svgrepo-com.svg'
 
 export const Navbar = () => {
-
+    const [menuIsOpen, setBergerMenu] = useState(false)
+    const onBurgerBtnClick = () => {
+        setBergerMenu(!menuIsOpen)
+    }
     return (
         <nav className={s.nav}>
-            <div className={s.item}>
-                <NavLink to='/profile' activeClassName={s.activeNavlink} >Profile</NavLink>
+            <div className={s.navContainer}>
+                <div className={s.linkAndImgBlock}>
+                    <svg className={s.svgIcon}>
+                        <use href={`${navSvg}#navProfile`}/>
+                    </svg>
+                    <NavLink to='/profile' className={s.active}>Profile</NavLink>
+                </div>
+
+                <div className={s.linkAndImgBlock}>
+                    <svg className={s.svgIcon}>
+                        <use href={`${navSvg}#message`}/>
+                    </svg>
+                    <NavLink to='/dialogs' className={s.active}>Messаge</NavLink>
+                </div>
+                <div className={s.linkAndImgBlock}>
+                    <svg className={s.svgIcon}>
+                        <use href={`${navSvg}#news`}/>
+                    </svg>
+
+                    <NavLink to='/news' className={s.active}>News</NavLink>
+                </div>
+                <div className={s.linkAndImgBlock}>
+                    <svg className={s.svgIcon}>
+                        <use href={`${navSvg}#music`}/>
+                    </svg>
+                    <NavLink to='/music' className={s.active}>Musiс</NavLink>
+                </div>
+                <div className={s.linkAndImgBlock}>
+                    <svg className={s.svgIcon}>
+                        <use href={`${navSvg}#settings`}/>
+                    </svg>
+                    <NavLink to='/settings' className={s.active}>Settings</NavLink>
+                </div>
+                <div className={s.linkAndImgBlock}>
+                    <svg className={s.svgIcon}>
+                        <use href={`${navSvg}#users`}/>
+                    </svg>
+                    <NavLink to='/users' className={s.active}>Users</NavLink>
+                </div>
+                <div className={s.linkAndImgBlock}>
+                    <svg className={s.svgIcon}>
+                        <use href={`${navSvg}#friends`}/>
+                    </svg>
+                    <NavLink to='/friends' className={s.active}>Friends</NavLink>
+                </div>
             </div>
-            <div className={`${s.item} ${s.activ}`}>
-                <NavLink to='/dialogs' activeClassName={s.activeNavlink}>Messаge</NavLink>
-            </div>
-            <div className={s.item}>
-                <NavLink to='/news' activeClassName={s.activeNavlink}>News</NavLink>
-            </div>
-            <div className={s.item}>
-                <NavLink to='/music' activeClassName={s.activeNavlink}>Musiс</NavLink>
-            </div>
-            <div className={s.item}>
-                <NavLink to='/settings' activeClassName={s.activeNavlink}>Settings</NavLink>
-            </div>
-            <div className={s.item}>
-                <NavLink to='/users' activeClassName={s.activeNavlink}>Users</NavLink>
-            </div>
-            <div className={s.item}>
-                <NavLink to='/friends' activeClassName={s.activeNavlink}>Friends</NavLink>
+            <div onClick={onBurgerBtnClick} className={s.burgerBtn}>
+                <span></span>
             </div>
 
-
-            {/*<Friends />*/}
         </nav>
     );
 };

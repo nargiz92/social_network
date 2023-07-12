@@ -1,8 +1,8 @@
 import * as React from 'react'
-import s from './Header.module.css'
+import s from 'src/components/Header/Header.module.scss'
 import Header from "./Header";
 import {connect} from "react-redux";
-import { DataAuthType, logout} from "../../redux/auth-reducer";
+import {DataAuthType, logout} from "../../redux/auth-reducer";
 import {RouteComponentProps} from "react-router-dom";
 import {AppRootStateType} from "../../redux/redux-store";
 
@@ -14,7 +14,7 @@ type mapStatePropsType = {
 }
 type mapDispatchToPropsType = {
 
-    logout:()=>void
+    logout: () => void
 }
 type OwnPropsType = mapStatePropsType & mapDispatchToPropsType
 type PropsAuthType = RouteComponentProps<PathParamsType> & OwnPropsType
@@ -30,4 +30,4 @@ class HeaderContainer extends React.Component<OwnPropsType> {
 const mapStateToProps = (state: AppRootStateType) => ({
     auth: state.auth
 })
-export default connect(mapStateToProps, { logout})(HeaderContainer);
+export default connect(mapStateToProps, {logout})(HeaderContainer);

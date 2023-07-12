@@ -1,7 +1,8 @@
 import {AppRootStateType} from "../../redux/redux-store";
-import {compose, Dispatch} from "redux";
+import {compose} from "redux";
 import {connect} from "react-redux";
-import {getUsers,
+import {
+    getUsers,
     follow,
     setCurrentPage,
     toggleIsFollowingProgress, unfollow,
@@ -22,16 +23,17 @@ import {
 } from "../../redux/user-selector";
 
 
-
 class UsersContainer extends React.Component<UsersPropsType> {
 
     componentDidMount() {
-        this.props.getUsers(this.props.currentPage, this.props.pageSize)
+        const {currentPage,pageSize }=this.props;
+        this.props.getUsers(currentPage, pageSize)
 
     }
 
     onPageChanged = (pageNumber: number) => {
-        this.props.getUsers(pageNumber, this.props.pageSize)
+        const {pageSize}=this.props;
+        this.props.getUsers(pageNumber, pageSize)
 
     }
 
@@ -49,9 +51,8 @@ class UsersContainer extends React.Component<UsersPropsType> {
                        unfollow={this.props.unfollow}
                        setCurrentPage={this.props.setCurrentPage}
                        isFetching={this.props.isFetching}
-
                        followingProgress={this.props.followingProgress}
-getUsers={this.props.getUsers}
+                       getUsers={this.props.getUsers}
                 />
             </div>
         );
@@ -70,7 +71,7 @@ type mapDispatchToPropsType = {
     follow: (userId: number) => void
     unfollow: (userId: number) => void
     setCurrentPage: (pageNumber: number) => void
-    getUsers:any
+    getUsers: any
 }
 const mapStateToProps = (state: AppRootStateType): mapStateToPropsType => {
     return {
@@ -83,7 +84,7 @@ const mapStateToProps = (state: AppRootStateType): mapStateToPropsType => {
     }
 }
 export type UsersPropsType = mapDispatchToPropsType & mapStateToPropsType
-  export default compose<React.ComponentType>(
+export default compose<React.ComponentType>(
     connect(mapStateToProps,
         {
             follow,
@@ -92,6 +93,5 @@ export type UsersPropsType = mapDispatchToPropsType & mapStateToPropsType
             toggleIsFollowingProgress,
             getUsers
         }),
-
 )(UsersContainer)
 
