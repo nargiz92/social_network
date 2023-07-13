@@ -15,7 +15,7 @@ const Users:React.FC<UsersPropsTypes> = ({totalUsers,pageSize,currentPage,onPage
 
     return (
       <div>
-          <Paginator totalUsers={totalUsers} pageSize={pageSize} currentPage={currentPage} onPageChanged={onPageChanged}/>
+          <Paginator totalItemsCount={totalUsers} pageSize={pageSize} currentPage={currentPage} onPageChanged={onPageChanged} portionSize={10}/>
           <div>
           {users.map(u => <User key={u.id} user={u} followingProgress={props.followingProgress}
                                   unfollow={props.unfollow} follow={props.follow} />

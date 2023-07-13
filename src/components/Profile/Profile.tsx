@@ -1,7 +1,7 @@
 import React from 'react';
-import s from './Profile.module.css';
+import s from './Profile.module.scss';
 import ProfileInfo from "./ProfilInfo/ProfileInfo";
-
+import styleContainer from '../../common/style/Container.module.scss'
 import MyPostContainer from "./MyPost/MyPostContainer";
 import {ProfilyType} from "../../redux/Profile_Page_reduser";
 
@@ -12,7 +12,7 @@ profile: null|ProfilyType
 }
 const Profile = (props:ProfileTypes) => {
     return (
-        <div className={s.profile}>
+        <div className={`${styleContainer.container} ${s.profile}`}>
           <ProfileInfo profile={props.profile} status={props.status} updatedStatus={props.updatedStatus}/>
             <MyPostContainer />
         </div>

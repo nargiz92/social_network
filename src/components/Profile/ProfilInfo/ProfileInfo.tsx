@@ -1,9 +1,13 @@
 import React from 'react';
-import s from './ProfileInfo.module.css'
+import s from './ProfileInfo.module.scss'
 import Preloader from "../../../common/preloader/Preloader";
 import {ProfilyType} from "../../../redux/Profile_Page_reduser";
 import ProfileStatusWithHook from "./ProfileStatusWithHook";
+import profileImg from '../../../assets/images/timeline-1.jpg'
 
+const imgOfProfile = {
+    backgroundImage: `url(${profileImg})`
+}
 type ProfileInfoPropsType = {
     profile: null | ProfilyType
     status:string
@@ -18,9 +22,8 @@ const ProfileInfo = (props: ProfileInfoPropsType) => {
 
     return (
         <div className={s.profileInfo}>
-            <img className={s.profileImg}
-                 src={'https://th.bing.com/th/id/OIP.TW5Fkdqi6O26c-o6kc1VcwHaE8?pid=ImgDet&rs=1'}
-                 alt={'profileImages'}/>
+            <div className={s.profileImg} style={imgOfProfile}></div>
+
             <div>
                 <img src={props.profile.photos.large}/>
             </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './Profile.module.css';
+import s from 'src/components/Profile/Profile.module.scss';
 import Profile from "./Profile";
 import {connect} from "react-redux";
 import {ProfilyType, getUsersProfile, getStatus, updatedStatus} from "../../redux/Profile_Page_reduser";

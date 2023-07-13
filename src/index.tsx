@@ -1,30 +1,15 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import { HashRouter} from "react-router-dom";
-import {Provider} from "react-redux";
-import store, {AppRootStateType} from "./redux/redux-store";
+import MainApp from "./App";
 
 
+ReactDOM.render(<MainApp/>, document.getElementById('root'))
 
 
-
-
-let rerender=(state:AppRootStateType)=>{
-    ReactDOM.render(
-        <HashRouter>
-            <Provider store={store}>
-            <App />
-        </Provider>
-        </HashRouter>,
-        document.getElementById('root')
-    );
-}
-
-rerender(store.getState());
-
-store.subscribe(()=>{
-    let state=store.getState()
-    rerender(state)})
+// rerender(store.getState());
+//
+// store.subscribe(() => {
+//     let state = store.getState()
+//     rerender(state)
+//

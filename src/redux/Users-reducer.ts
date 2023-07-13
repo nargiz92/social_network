@@ -33,7 +33,7 @@ const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
 const TOGGLE_FOLLOWING_PROGRESS = 'TOGGLE_FOLLOWING_PROGRESS'
 const InitialState: InitStateType = {
     users: [],
-    pageSize: 5,
+    pageSize: 10,
     totalUsers: 0,
     currentPage: 1,
     isFetching: false,

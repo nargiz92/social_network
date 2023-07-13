@@ -1,7 +1,7 @@
 import React, {ComponentType} from 'react';
-import './App.css';
+import s from './App.module.scss'
 import {Navbar} from "./components/Navbar/Navbar";
-import {Route, withRouter} from "react-router-dom";
+import {HashRouter, Route, withRouter} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
@@ -13,8 +13,9 @@ import Login from "./components/login/Login";
 import {compose} from "redux";
 import {connect} from "react-redux";
 import Preloader from "./common/preloader/Preloader";
-import {AppRootStateType} from "./redux/redux-store";
 import {initilizeApp} from "./redux/app-reducer";
+import {Provider} from "react-redux";
+import store, {AppRootStateType} from "./redux/redux-store";
 
 export type AppPropsType = {
     initilizeApp:()=>void
@@ -31,10 +32,17 @@ class App extends React.Component<AppPropsType> {
             return <Preloader/>
         }
         return (
-            <div className="app_wrapper">
-                <HeaderContainer/>
-                <Navbar/>
-                <div className={'app-wrapper-content'}>
+            <div className={s.app_wrapper}>
+                <div className={s.header}>
+                    <HeaderContainer/>
+                </div>
+                <div className={s.nav}>
+                    <Navbar/>
+                </div>
+
+
+
+                <div className={s.appWrapperContent}>
                     <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
                     <Route path='/dialogs' render={() => <DialogsContainer/>}/>
                     <Route path='/users' render={() => <UsersContainer/>}/>
@@ -53,5 +61,14 @@ const mapStateToProps=(state:AppRootStateType)=>({
     initialized:state.app.initialized
 })
 
-export default compose<ComponentType>(withRouter,
+const AppContainer= compose<ComponentType>(withRouter,
     connect(mapStateToProps,{initilizeApp}))(App)
+
+const MainApp=(props:any)=>{
+    return <HashRouter>
+        <Provider store={store}>
+            <AppContainer />
+        </Provider>
+    </HashRouter>
+}
+export default MainApp;

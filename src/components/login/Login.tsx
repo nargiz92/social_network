@@ -7,42 +7,43 @@ import {login} from "../../redux/auth-reducer";
 import {Redirect} from "react-router-dom";
 import {AppRootStateType} from "../../redux/redux-store";
 import s from './../../common/./FormsControl/FormControl.module.css'
-import container from '../../common/style/Container.module.scss'
+import styleContainer from '../../common/style/Container.module.scss'
+
 type FormDataType = {
     email: string
     password: string
     rememberMe: boolean
 }
-export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = ({handleSubmit,error}) => {
-    return <div>
-        <div className={`${s.container}`}>
+export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = ({handleSubmit, error}) => {
+    return <div className={s.login}>
+        <div className={`${styleContainer.container}`}>
 
 
-    <form onSubmit={handleSubmit}>
-        <div>
-            <Field placeholder={'Email'} name={'email'}
-                   validate={[required]} component={Input}/>
-        </div>
-        <div>
-            <Field placeholder={'Password'} name={'password'}
-                   validate={[required]}
-                   type={'password'} component={Input}/>
-        </div>
-        <div>
-            <Field component={Input}
-                   name='rememberMe' type={'checkbox'}/>remember me
-        </div>
-        {
-            error && <div className={s.formSummaryError}>
-            {error}
-        </div>
-        }
-        <div>
-            <button>login</button>
-        </div>
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <Field placeholder={'Email'} name={'email'}
+                           validate={[required]} component={Input}/>
+                </div>
+                <div>
+                    <Field placeholder={'Password'} name={'password'}
+                           validate={[required]}
+                           type={'password'} component={Input}/>
+                </div>
+                <div>
+                    <Field component={Input}
+                           name='rememberMe' type={'checkbox'}/>remember me
+                </div>
+                {
+                    error && <div className={s.formSummaryError}>
+                        {error}
+                    </div>
+                }
+                <div>
+                    <button>login</button>
+                </div>
 
-    </form>
-</div>
+            </form>
+        </div>
     </div>
 }
 const LoginReduxForm = reduxForm<FormDataType>({
