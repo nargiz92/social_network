@@ -1,0 +1,41 @@
+.myPostContainer {
+  background: #fdfdfd none repeat scroll 0 0;
+  border: 1px solid #ede9e9;
+  border-radius: 5px;
+  width: 100%;
+  margin-bottom: 17px;
+  padding: 25px;
+}
+
+.submitForm {
+  display: flex;
+  flex-direction: column;
+  width: 85.5%;
+  background: #fdfdfd none repeat scroll 0 0;
+  border: 1px solid #ede9e9;
+  border-radius: 5px;
+
+  margin-bottom: 17px;
+  padding: 25px;
+
+  & textarea {
+    border: 1px solid #eeeeee;
+    border-radius: 6px 6px 0 0;
+    padding: 10px;
+    width: 100%;
+    border-bottom: 0;
+    resize: none;
+  }
+
+  & button {
+    margin-top: 10px;
+    border: medium none;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 4px 20px;
+    border-radius: 4px;
+    background: #088dcd;
+    cursor: pointer;
+  }
+}

@@ -4,6 +4,7 @@ import Preloader from "../../../common/preloader/Preloader";
 import {ProfilyType} from "../../../redux/Profile_Page_reduser";
 import ProfileStatusWithHook from "./ProfileStatusWithHook";
 import profileImg from '../../../assets/images/timeline-1.jpg'
+import userImage from '../../../assets/images/OIP.jpeg'
 
 const imgOfProfile = {
     backgroundImage: `url(${profileImg})`
@@ -24,19 +25,24 @@ const ProfileInfo = (props: ProfileInfoPropsType) => {
         <div className={s.profileInfo}>
             <div className={s.profileImg} style={imgOfProfile}></div>
 
-            <div>
-                <img src={props.profile.photos.large}/>
+            <div className={s.userPhotoBlock}>
+                <img className={s.someUserPhotos} src={props.profile.photos.large||userImage}/>
             </div>
-            <div>{props.profile.aboutMe}
-                {props.profile.fullName}
-            </div>
-            <ul>
+            <div className={s.usersDataAndStatus}>
+                <div>{props.profile.aboutMe}
+                   <h3>
+                       {props.profile.fullName}
+                   </h3>
+                </div>
+                <ul>
 
-                <li>
-                    {props.profile.contacts.vk}
-                </li>
-            </ul>
-            <ProfileStatusWithHook status={props.status} updatedStatus={props.updatedStatus}/>
+                    <li>
+                        {props.profile.contacts.vk}
+                    </li>
+                </ul>
+                <ProfileStatusWithHook status={props.status} updatedStatus={props.updatedStatus}/>
+            </div>
+
         </div>
     );
 };

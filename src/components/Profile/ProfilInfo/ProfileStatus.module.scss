@@ -1,0 +1,21 @@
+.statusContainer{
+  .statusForChange{
+    cursor: pointer;
+  }
+.inputForChangeStatus input{
+  background: #f5f5f5 none repeat scroll 0 0;
+  border: 1px solid #dadede;
+  border-radius: 30px;
+  color: #7b7b7b;
+  font-size: 15px;
+  padding: 7px 20px;
+  width: 100%;
+}
+  & span{
+    font-family: inherit;
+    color: #7b7b7b;
+
+
+  }
+}
+

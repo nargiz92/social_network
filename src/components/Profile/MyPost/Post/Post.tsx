@@ -1,6 +1,12 @@
 import React from 'react';
-import s from "./Post.module.css";
+import s from "./Post.module.scss";
+import likesImg from '../../../../assets/images/like-svgrepo-com.svg'
 
+import navSvg from '../../../../assets/images/forNav/user-heart-rounded-svgrepo-com.svg'
+
+const imgOfProfile = {
+    backgroundImage: `url(${likesImg})`
+}
 
 export type PostPropsType = {
     message: string
@@ -12,9 +18,15 @@ const Post = (props: PostPropsType) => {
             <img
                 src={'https://th.bing.com/th/id/OIP.iyrBrw7GY8DPoRRRyMvemAHaJO?w=133&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7'}
                 alt={'logo'}/>
-            {props.message}
-            <div>
-                <span>like:{props.likes}</span>
+            <div className={s.postsText}>
+                {props.message}
+            </div>
+
+            <div className={s.svgIkonAndLikes}>
+                <svg className={s.svgIcon}>
+                    <use href={`${navSvg}#likes`}/>
+                </svg>
+                <span >:{props.likes}</span>
             </div>
         </div>
     );

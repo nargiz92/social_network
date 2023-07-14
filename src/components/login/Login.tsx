@@ -16,7 +16,7 @@ type FormDataType = {
 }
 export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = ({handleSubmit, error}) => {
     return <div className={s.login}>
-        <div className={`${styleContainer.container}`}>
+        <div >
 
 
             <form onSubmit={handleSubmit}>
@@ -50,6 +50,8 @@ const LoginReduxForm = reduxForm<FormDataType>({
     form: 'login'
 })(LoginForm)
 
+
+
 const Login = (props: LoginOwnPropsType) => {
     const onSubmit = (formData: FormDataType) => {
         props.login(formData.email, formData.password, formData.rememberMe)
@@ -57,12 +59,15 @@ const Login = (props: LoginOwnPropsType) => {
     if (props.isAuth) {
         return <Redirect to={'/profile'}/>
     }
-    return <div>
-        <h1>LOGIN</h1>
+    return <div className={`${styleContainer.container} ${s.login}`} >
+        <h2>Login</h2>
         <LoginReduxForm onSubmit={onSubmit}/>
     </div>
 
 }
+
+
+
 type MapStateToPropsType = {
     isAuth: boolean
 

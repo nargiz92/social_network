@@ -1,0 +1,31 @@
+.item {
+
+  background: #fdfdfd none repeat scroll 0 0;
+  border: 1px solid #ede9e9;
+  border-radius: 5px;
+  margin-bottom: 17px;
+  padding: 25px;
+
+  & img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+  }
+  .postsText{
+    padding: 10px;
+    font-family: inherit;
+    font-weight: 400;
+  }
+
+  .svgIkonAndLikes {
+    margin-top: 5px;
+display: flex;
+    align-items: center;
+    & svg {
+      width: 17px;
+      height: 17px;
+      margin-right: 5px;
+    }
+  }
+}
+
